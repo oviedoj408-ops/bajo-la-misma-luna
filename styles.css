@@ -1,0 +1,607 @@
+
+/* =========================================
+   BAJO LA MISMA LUNA 🌙
+   Diseño principal
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    font-family: 'Georgia', serif;
+    color: #f2fff5;
+    background: linear-gradient(
+        135deg,
+        #061b16,
+        #0b3025,
+        #102b22,
+        #061510
+    );
+    overflow-x: hidden;
+}
+
+/* =========================================
+   FONDO Y ESTRELLAS
+========================================= */
+
+.stars {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.star {
+    position: absolute;
+    background: #ffffff;
+    border-radius: 50%;
+    opacity: 0.7;
+    animation: twinkle 3s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+    0%, 100% {
+        opacity: 0.2;
+        transform: scale(0.7);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.3);
+    }
+}
+
+/* =========================================
+   CONTENEDOR PRINCIPAL
+========================================= */
+
+.container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 950px;
+    margin: auto;
+    padding: 45px 20px;
+    text-align: center;
+}
+
+/* =========================================
+   LUNA
+========================================= */
+
+.moon {
+    width: 115px;
+    height: 115px;
+    margin: 15px auto 30px;
+    border-radius: 50%;
+    background: #f5f3d5;
+    box-shadow:
+        0 0 25px #fff8c4,
+        0 0 60px rgba(255, 255, 210, 0.5),
+        0 0 100px rgba(255, 255, 210, 0.2);
+    cursor: pointer;
+    transition: transform 0.5s ease;
+}
+
+.moon:hover {
+    transform: scale(1.08);
+}
+
+.moon-message {
+    max-width: 500px;
+    margin: 0 auto 25px;
+    color: #c4f5d1;
+    font-size: 17px;
+    font-style: italic;
+    line-height: 1.8;
+}
+
+/* =========================================
+   TEXTOS
+========================================= */
+
+.subtitle {
+    color: #a8d9b5;
+    font-size: 14px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+}
+
+h1 {
+    color: #d8f5df;
+    font-size: clamp(32px, 6vw, 48px);
+    margin-bottom: 20px;
+    text-shadow: 0 0 20px rgba(155, 255, 184, 0.25);
+}
+
+h2 {
+    color: #d4f5dc;
+    margin-bottom: 20px;
+    font-size: 27px;
+}
+
+p {
+    line-height: 1.8;
+}
+
+/* =========================================
+   BOTONES
+========================================= */
+
+button {
+    border: 1px solid rgba(190, 255, 210, 0.5);
+    background: linear-gradient(135deg, #245c43, #123b2a);
+    color: #ffffff;
+    padding: 14px 28px;
+    border-radius: 30px;
+    font-size: 15px;
+    font-family: inherit;
+    cursor: pointer;
+    margin-top: 25px;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
+}
+
+button:hover {
+    background: linear-gradient(135deg, #347c59, #1b5239);
+    transform: translateY(-3px);
+    box-shadow: 0 0 22px rgba(130, 255, 170, 0.25);
+}
+
+/* =========================================
+   CARTAS Y SECCIONES
+========================================= */
+
+.letter {
+    width: 100%;
+    max-width: 750px;
+    margin: 35px auto;
+    padding: 35px;
+    background: rgba(12, 45, 32, 0.78);
+    border: 1px solid rgba(175, 240, 190, 0.2);
+    border-radius: 18px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    animation: appear 1s ease;
+}
+
+.letter p {
+    color: #e0f3e5;
+    font-size: 17px;
+    line-height: 2;
+}
+
+.hidden {
+    display: none !important;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================================
+   GALERÍA DE FOTOGRAFÍAS
+========================================= */
+
+.photo-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.gallery-intro {
+    color: #a7e8bc;
+    font-style: italic;
+    line-height: 1.8;
+    margin: 15px 0 25px;
+    text-align: center;
+}
+
+.photo-card {
+    background: #f7f4e9;
+    padding: 12px 12px 18px;
+    border-radius: 5px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    transform: rotate(-1deg);
+    overflow: hidden;
+}
+
+.photo-card:nth-child(even) {
+    transform: rotate(1.5deg);
+}
+
+.photo-card:hover {
+    transform: translateY(-7px) rotate(0deg) scale(1.025);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.45);
+}
+
+.photo-card img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    display: block;
+    border-radius: 3px;
+    cursor: zoom-in;
+}
+
+.photo-card p {
+    color: #254b36;
+    font-size: 15px;
+    margin-top: 12px;
+    line-height: 1.5;
+    text-align: center;
+}
+
+/* =========================================
+   APARICIÓN SUAVE DE LAS FOTOS
+========================================= */
+
+.photo-card.show-photo {
+    animation: memoryAppear 0.8s ease both;
+}
+
+@keyframes memoryAppear {
+    from {
+        opacity: 0.4;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================================
+   MENSAJE FINAL
+========================================= */
+
+#final {
+    border: 1px solid rgba(190, 255, 210, 0.3);
+    background: rgba(10, 44, 30, 0.9);
+}
+
+#final p {
+    color: #e6f9eb;
+    font-size: 18px;
+    line-height: 2;
+}
+
+/* =========================================
+   ESTRELLAS FUGACES
+========================================= */
+
+.shooting-star {
+    position: fixed;
+    width: 120px;
+    height: 2px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #ffffff,
+        transparent
+    );
+    transform: rotate(-35deg);
+    animation: shooting 2.2s linear forwards;
+    pointer-events: none;
+    z-index: 10;
+}
+
+@keyframes shooting {
+    0% {
+        opacity: 0;
+        transform: translate(0, 0) rotate(-35deg);
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(-400px, 400px) rotate(-35deg);
+    }
+}
+
+/* =========================================
+   CORAZONES FLOTANTES
+========================================= */
+
+.floating-heart {
+    position: fixed;
+    bottom: -30px;
+    font-size: 22px;
+    pointer-events: none;
+    z-index: 10;
+    animation: floatHeart 5s ease-in forwards;
+}
+
+@keyframes floatHeart {
+    0% {
+        opacity: 0;
+        transform: translateY(0) scale(0.7);
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-100vh) scale(1.5);
+    }
+}
+
+/* =========================================
+   VISOR DE FOTOGRAFÍAS - LUPA
+========================================= */
+
+.photo-modal {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.93);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+    z-index: 1000;
+}
+
+.photo-modal img {
+    max-width: 90%;
+    max-height: 78vh;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 0 35px rgba(160, 255, 190, 0.2);
+    animation: zoomPhoto 0.35s ease;
+}
+
+.photo-modal p {
+    color: #d6f5df;
+    font-size: 17px;
+    margin-top: 18px;
+    text-align: center;
+}
+
+.photo-modal.hidden {
+    display: none !important;
+}
+
+.close-photo {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 35px;
+    color: white;
+    background: transparent;
+    border: none;
+    padding: 5px 12px;
+    box-shadow: none;
+    margin: 0;
+}
+
+.close-photo:hover {
+    background: transparent;
+    transform: scale(1.2);
+    box-shadow: none;
+}
+
+@keyframes zoomPhoto {
+    from {
+        opacity: 0;
+        transform: scale(0.85);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* =========================================
+   PIE DE PÁGINA
+========================================= */
+
+footer {
+    color: #9fc9aa;
+    font-size: 13px;
+    margin-top: 45px;
+    padding: 20px;
+    text-align: center;
+}
+
+/* =========================================
+   DISEÑO PARA CELULARES
+========================================= */
+
+@media (max-width: 600px) {
+
+    .container {
+        padding: 30px 15px;
+    }
+
+    .moon {
+        width: 90px;
+        height: 90px;
+    }
+
+    .letter {
+        padding: 22px 17px;
+    }
+
+    .letter p {
+        font-size: 15px;
+    }
+
+    .photo-gallery {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .photo-card img {
+        height: 280px;
+    }
+
+    .photo-card {
+        max-width: 380px;
+        width: 100%;
+        margin: auto;
+    }
+
+    .photo-modal img {
+        max-width: 95%;
+        max-height: 70vh;
+    }
+
+    .close-photo {
+        top: 10px;
+        right: 15px;
+    }
+}
+
+/* Animación de aparición de recuerdos */
+.photo-card {
+    opacity: 0;
+    transform: translateY(45px) scale(0.90);
+}
+
+.photo-card.show-photo {
+    animation: memoryAppear 1s ease forwards;
+}
+
+@keyframes memoryAppear {
+    0% {
+        opacity: 0;
+        transform: translateY(45px) scale(0.90) rotate(-3deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1) rotate(0deg);
+    }
+}
+
+
+/* EFECTO ESPECIAL PARA LAS FOTOGRAFÍAS */
+
+.photo-card:hover {
+    transform: translateY(-12px) scale(1.06) rotate(0deg) !important;
+
+    box-shadow:
+        0 0 15px #64ff9b,
+        0 0 35px rgba(100, 255, 155, 0.7),
+        0 0 60px rgba(100, 255, 155, 0.4) !important;
+
+    position: relative;
+    z-index: 5;
+}
+
+.photo-card:hover img {
+    filter: brightness(1.15) saturate(1.25) !important;
+}
+
+/* =====================================
+   ENTRADA CINEMATOGRÁFICA
+===================================== */
+
+/* La página aparece suavemente */
+.container {
+    animation: cinematicEntry 2s ease both;
+}
+
+@keyframes cinematicEntry {
+    0% {
+        opacity: 0;
+        transform: translateY(25px);
+        filter: blur(8px);
+    }
+
+    60% {
+        opacity: 0.8;
+        filter: blur(2px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+/* La luna aparece con un resplandor */
+.moon {
+    animation: moonEntrance 2s ease both;
+}
+
+@keyframes moonEntrance {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+        box-shadow: 0 0 0 transparent;
+    }
+
+    70% {
+        opacity: 1;
+        transform: scale(1.08);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+        box-shadow:
+            0 0 25px #fff8c4,
+            0 0 60px rgba(255, 255, 210, 0.5),
+            0 0 100px rgba(255, 255, 210, 0.2);
+    }
+}
+
+/* El saludo entra después de la luna */
+h1 {
+    animation: greetingEntrance 1.5s ease 0.8s both;
+}
+
+@keyframes greetingEntrance {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+        letter-spacing: 8px;
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        letter-spacing: normal;
+    }
+}
+
+/* Respeta a quienes prefieren menos movimiento */
+@media (prefers-reduced-motion: reduce) {
+    .container,
+    .moon,
+    h1 {
+        animation: none !important;
+    }
+}
